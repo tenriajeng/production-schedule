@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('production_schedules', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('production_plan_id')->constrained('production_plans')->onDelete('cascade');
+            $table->string('day');
+            $table->integer('planned_production');
+            $table->integer('adjusted_production');
             $table->timestamps();
         });
     }
